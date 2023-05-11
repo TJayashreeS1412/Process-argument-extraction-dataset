@@ -1,0 +1,250 @@
+<!-- You must include this JavaScript file -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+<script src="https://assets.crowd.aws/crowd-html-elements.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<style>
+
+  crowd-card {
+    width: 50%;
+  }
+  
+  .card {
+    margin: 10px;
+  }
+  
+</style>
+<script>
+
+          
+</script>
+<!-- For the full list of available Crowd HTML Elements and their input/output documentation,
+      please refer to https://docs.aws.amazon.com/sagemaker/latest/dg/sms-ui-template-reference.html -->
+
+<!-- You must include crowd-form so that your task submits answers to MTurk -->
+<crowd-form answer-format="flatten-objects">
+
+    <div class="d-flex justify-content-end">
+    <crowd-instructions link-text="View instructions" link-type="button">
+        <short-summary>
+            <p>Collect question answer pairs for the given passage and structure.</p>
+        </short-summary>
+
+        <detailed-instructions>
+            <h3>Please type te question and answers for the given paragraph based on the structure.</h3>
+            <p>
+              Given a context and an intent, write how you would express the intent using natural language. 
+              Don't try to be overly formal, simply write what you would say if you were in the given situation.
+        </p>
+        </detailed-instructions>
+
+        <positive-example>
+            <h3>Context</h3>
+            <p>You bought a pair of shoes online but they don't fit</p>
+
+            <h3>Intent</h3>
+            <p>You want to try to return the shoes via an online customer service chat bot</p>
+
+            <h3>Response</h3>
+            <p>I would like to return a pair of shoes</p>
+        </positive-example>
+
+        <positive-example>
+            <h3>Context</h3>
+            <p>You bought a pair of shoes online but they don't fit</p>
+
+            <h3>Intent</h3>
+            <p>You want to try to return the shoes via an online customer service chat bot</p>
+
+            <h3>Response</h3>
+            <p>Hi, I'm trying to buy a plane ticket for tomorrow morning and your website isn't working</p>
+        </positive-example>
+
+        <negative-example>
+            <h3>Context</h3>
+            <p>You bought a pair of shoes online but they don't fit</p>
+
+            <h3>Intent</h3>
+            <p>You want to try to return the shoes via an online customer service chat bot</p>
+
+            <h3>Response</h3>
+            <p>Don't fit</p>
+         </negative-example>
+    </crowd-instructions>
+    </div>
+
+    <p>Please write your questions and respective answers for the given informattion :</p>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-7">
+                <div class="card">
+                    <div id="card-body">${data} </div>
+                  
+                    <div id="card-body1">   ${part1}</div>
+                    
+                </div>
+            </div>
+            <div class="col-5">
+                <ol>
+                    <li>
+                        <p></p>
+                        <p></p>
+                        <div class="row">
+                            <div class="col">
+                                <table class="table table-striped">
+                                    <thead>
+                                      <tr id="trigger">
+                                        <th></th> 
+                                        <th>prosecuting</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                      <tr> 
+                                        <td>Defendant - Naser Jason Abdo</td> 
+                                        <td>Prosecutor - Mark Frazier</td>
+                                      </tr>
+                                      <tr> 
+                                        <td>JudgeCourt - jury</td> 
+                                      </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div> 
+                    </li>
+                     <li>
+                        <p>Justice.ArrestJailDetain.Unspecified</p> 
+                        <p>These elements might include the identity of the person being arrested or detained, the identity of the arresting or detaining authority, the location of the arrest or detention, and the duration of the arrest or detention.</p>
+                        <div class="row">
+                            <div class="col">
+                                <table class="table table-striped">
+                                    <thead>
+                                      <tr>
+                                        <th>arrested</th>
+                                        <th>custody</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                      <tr>
+                                        <td>Detainee - Abdo</td>
+                                        <td>Detainee - Abdo</td>
+                                      </tr>
+                                      <tr>
+                                        <td>Jailer - officers</td>
+                                      </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div> 
+                    </li>
+                    <li>
+                        <p>Conflict.Attack.DetonateExplode</p> 
+                        <p>The event involves intentional or accidental use of a bomb, grenade, missile, or any other explosive device that causes damage to property, injury to people, and loss of life.</p>
+                        <div class="row">
+                            <div class="col">
+                                <table class="table table-striped">
+                                    <thead>
+                                      <tr>
+                                        <th>detonating</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>ExplosiveDevice - them</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Target - restaurant</td>
+                                        </tr>
+                                        <tr>
+                                          <td>Attacker - Abdo</td>  
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div> 
+                    </li>
+                    <li>
+                        <p>Justice.Convict.Unspecified</p> 
+                        <p>The event involves a judicial determination that the person accused of a crime is guilty of the offense, based on the evidence presented during the trial. </p>
+                        <div class="row">
+                            <div class="col">
+                                <table class="table table-striped">
+                                    <thead>
+                                      <tr>
+                                        <th>convicted</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                      <tr>
+                                        <td>Defendant - he</td>
+                                      </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div> 
+                    </li>
+                    <li>
+                        <p>Justice.InvestigateCrime.Unspecified</p> 
+                        <p>The legal process of investigating a crime, where the specific nature of the crime being investigated is not specified. The event involves law enforcement agencies gathering and analyzing evidence, interviewing witnesses, and other activities to determine the facts and circumstances of the crime.</p>
+                        <div class="row">
+                            <div class="col">
+                                <table class="table table-striped">
+                                    <thead>
+                                      <tr>
+                                        <th>investigated</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                      <tr>
+                                        <td>Investigator - agents</td>
+                                      </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div> 
+                    </li>
+                </ol>
+            </div>
+        </div>
+    </div>
+    
+  
+   
+
+    <div class="container">
+        <button onclick="addQuestion()">
+            Add Question
+        </button>
+        <script>
+            // function addQuestion() {
+            //     var listItem = document.createElement("div");
+            //     listItem.innerHTML =  "<p><strong>Question</strong></p><crowd-text-area name='Questions' placeholder='Provide question here...' rows='2' required></crowd-text-area>"+
+            //     "<p><strong>Answer</strong></p><crowd-text-area name='Answers' placeholder='Provide answer here...' rows='2' required></crowd-text-area>"
+            //     document.getElementById("myList").appendChild(listItem)
+            // }
+                window.onload = function() {
+        // Get the element with id="myHeading"
+      const element = document.getElementById('card-body');
+
+        // Change the innerHTML of the element
+        const terv=element.innerHTML
+        terv.event_type
+             document.getElementById('card-body1').innerHTML=terv;
+        
+      };
+            
+
+        // Change the innerHTML of the element
+      
+        </script>
+
+        <div id="myList">
+            <div>
+                <p><strong>Question</strong></p><crowd-text-area name='Questions' placeholder='Provide question here...' rows='2' required></crowd-text-area>
+                <p><strong>Answer</strong></p><crowd-text-area name='Answers' placeholder='Provide answer here...' rows='2' required></crowd-text-area>
+            </div>
+        </div>
+    </div>
+</crowd-form>
+
